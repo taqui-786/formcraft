@@ -32,6 +32,7 @@ export function FormPreview({ fields }: FormPreviewProps) {
       if (field.required) {
         fieldSchema = fieldSchema.min(1, field.validation.required || "This field is required");
       } else {
+        // @ts-ignore
         fieldSchema = fieldSchema.optional();
       }
       
@@ -77,7 +78,7 @@ export function FormPreview({ fields }: FormPreviewProps) {
           />
           {form.formState.errors[field.name] && (
             <p className="text-sm text-destructive">
-              {form.formState.errors[field.name]?.message}
+              {form.formState.errors[field.name]?.message?.toString()}
             </p>
           )}
         </div>
